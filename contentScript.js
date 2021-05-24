@@ -135,10 +135,12 @@ const repFun = () => {
         break;
       }
     }
+
     if (foundslot) {
+      console.log('found slot')
+      clearTimeout(window.refreshTimer);
       setTimeout(enterCaptcha, 1000);
     } else {
-
       if (searchByDistrictFlag && enableAutoRefresh) {
         const searchTimer = 2000;
         console.log(`slot not found, searching again in 2000`)
@@ -153,6 +155,15 @@ const repFun = () => {
         }
       }
 
+      if (enableAutoRefresh) {
+        const timer = 1000 * 60;
+        if (!window.refreshTimer) {
+          console.log(`setting a timer for ${Math.round(timer/1000)}s to refresh page`)
+          window.refreshTimer = setTimeout(() => {
+            location.reload();
+          }, timer);
+        }
+      }
     }
   }
 
