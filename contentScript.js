@@ -118,6 +118,12 @@ const repFun = () => {
       }
       let slots = $(slotRows[i]).find("li a");
       for (let slotIter = 0; slotIter < slots.length; slotIter++) {
+        let _age = slots[slotIter].parentNode.querySelector('.age-limit');
+        let ageContent = _age && _age.textContent.trim();
+        if (ageContent !== ageSelectorText) {
+          continue;
+        }
+
         let avail = parseInt(slots[slotIter].text.trim());
         if (avail >= booking_lower_lim) {
           slots[slotIter].click();
