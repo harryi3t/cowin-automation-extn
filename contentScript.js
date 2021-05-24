@@ -92,10 +92,15 @@ const repFun = () => {
   }
 
   const findSlotsAndBook = () => {
+    console.log('>>> findSlotsAndBook');
+
     let foundslot = false;
     var slotRows = $("ul.slot-available-wrap")
     var centerNameRows = $("ion-col.main-slider-wrap");
-    if (slotRows.length === 0) return;
+    if (slotRows.length === 0) {
+      console.log('data not loaded yet')
+      return;
+    }
 
     let centerTitles = $(centerNameRows).find(".center-name-title");
     let centerAddresses = $(centerNameRows).find(".center-name-text");
