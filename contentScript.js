@@ -192,12 +192,11 @@ const repFun = () => {
     }, 500);
 
   }
-  const keepTryingToBook = () => {
-    setInterval(() => {
-      if (keeptryingcontinuously) findSlotsAndBook();
-    }, 2000);
-  }
-  keepTryingToBook();
+
+  console.log('waiting for data to load')
+  waitForEl("mat-selection-list mat-list-option", function () {
+    findSlotsAndBook();
+  })
   const dispatchStateDistrictClick = () => {
     // checked = district
     // unchecked = pincode
