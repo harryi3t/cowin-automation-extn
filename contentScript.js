@@ -140,9 +140,16 @@ const repFun = () => {
     } else {
 
       if (searchByDistrictFlag && enableAutoRefresh) {
+        const searchTimer = 2000;
+        console.log(`slot not found, searching again in 2000`)
         if ($('.pin-search-btn').length !== 0) {
-          $('.pin-search-btn').trigger('click');
-          dispatchAgeSelectorClick();
+          setTimeout(() => {
+            $('.pin-search-btn').trigger('click');
+            dispatchAgeSelectorClick();
+            waitForEl("mat-selection-list mat-list-option", function () {
+              findSlotsAndBook();
+            })
+          }, searchTimer);
         }
       }
 
