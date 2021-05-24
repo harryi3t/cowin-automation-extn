@@ -266,7 +266,7 @@ setInterval(function () {
     current_href = location.href;
   } else {
   }
-}, 100);
+}, 500);
 
 
 const keep_focusing = () => {
